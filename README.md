@@ -9,7 +9,7 @@
 
 
 ### 2. 借助chatterbot实现的夸夸闲聊机器人
-效果很不好，chatterbot本身适用于闲聊，任务性差，对语料的方法性好像也不太敏感
+效果很不好，chatterbot本身适用于闲聊，任务性差，对语料的方向性好像也不太敏感
 ![](https://raw.githubusercontent.com/xiaopangxia/kuakua_robot/master/image/kuakua_1.PNG)
 
 

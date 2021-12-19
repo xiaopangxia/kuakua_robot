@@ -5,11 +5,13 @@
 # Continued by Dustella
 # 2021.12.19
 
+from flask import Flask,request
 import random
 from sentence_similarity.sentenceSimilarity import SentenceSimilarity
 from sentence_similarity.zhcnSegment import zhcnSeg
 
 class kuakuaChat():
+    
     def __init__(self):
         """
         初始化夸夸话题回复表
@@ -48,18 +50,32 @@ class kuakuaChat():
             answer_list += answer
         return answer_list
 
+    def start_server(self):
+        """
+        启动后端服务器，无参数
+        """
+        app=Flask(__name__)
+
+        @app.route("/getKuakua",methods=["GET"])
+        def kuakua():
+            input = request.args.get("sentence")
+            return random.choice(self.answer_question(input))
+        app.run()
+        
+
 
 
 if __name__ == '__main__':
     test_bot = kuakuaChat()
-    while True:
-        try:
-            user_input = input('USER:')
-            answer_list = test_bot.answer_question(user_input)
-            response = random.choice(answer_list)
-            print('BOT:', response)
-        # 直到按ctrl-c 或者 ctrl-d 才会退出
-        except (KeyboardInterrupt, EOFError, SystemExit):
-            break
+    # while True:
+    #     try:
+    #         user_input = input('USER:')
+    #         answer_list = test_bot.answer_question(user_input)
+    #         response = random.choice(answer_list)
+    #         print('BOT:', response)
+    #     # 直到按ctrl-c 或者 ctrl-d 才会退出
+    #     except (KeyboardInterrupt, EOFError, SystemExit):
+    #         break
+    test_bot.start_server()
 
 

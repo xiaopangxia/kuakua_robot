@@ -14,4 +14,31 @@
 
 ## 食用方法
 
+将sim_kuakua移动到项目文件夹，在你的项目内使用
 
+```Python
+from sim_kuakua import kuakuaChat
+```
+
+### 直接在项目中调用
+
+```Python
+input="" #输入语句
+bot=kuakuaChat()
+answerList=bot.answer_question(input)
+```
+
+会返回一个回答的List
+
+### 启动服务器
+
+```Python
+bot=kuakuaChat()
+bot.start_server()
+```
+
+这样会在5000端口启动一个服务器。
+
+请求 /getKuakua ,附加payload sentence={输入}
+
+样例：
